@@ -128,6 +128,7 @@
 		("y" (set CnstID 33) (set CmpdCnstFlag 0) "য়")
 		("rf" (set CnstID 34) (set CmpdCnstFlag 0) "ড়")
 		("rff" (set CnstID 35) (set CmpdCnstFlag 0) "ঢ়")
+		;; The following 1 mapping is kept unchanged even for touchscreen.
 		(",," (set CnstID 36) (set CmpdCnstFlag 0) "়")
 		;; কিছু বিশেষ যুক্তবর্ণ যাদেরকে ব্যঞ্জনবর্ণের মর্যাদা দেওয়া হলো
 		("kf" (set CnstID 39) (set CmpdCnstFlag 0) "ক্ষ")
@@ -173,50 +174,7 @@
 
 	)
 	(ongko
-		(".1" ".১")
-		(".2" ".২")
-		(".3" ".৩")
-		(".4" ".৪")
-		(".5" ".৫")
-		(".6" ".৬")
-		(".7" ".৭")
-		(".8" ".৮")
-		(".9" ".৯")
-		(".0" ".০")
-
-		("1" "১")
-		("2" "২")
-		("3" "৩")
-		("4" "৪")
-		("5" "৫")
-		("6" "৬")
-		("7" "৭")
-		("8" "৮")
-		("9" "৯")
-		("0" "০")
-
-		("1." "১.")
-		("2." "২.")
-		("3." "৩.")
-		("4." "৪.")
-		("5." "৫.")
-		("6." "৬.")
-		("7." "৭.")
-		("8." "৮.")
-		("9." "৯.")
-		("0." "০.")
-
-		("1.." "১।")
-		("2.." "২।")
-		("3.." "৩।")
-		("4.." "৪।")
-		("5.." "৫।")
-		("6.." "৬।")
-		("7.." "৭।")
-		("8.." "৮।")
-		("9.." "৯।")
-		("0.." "০।")
-
+		;; Physical Keyboard Support. Touchscreen keyboards don't send these key events.
 		((KP_0) "০") ; U+09E6 BENGALI DIGIT ZERO
 		((KP_1) "১") ; U+09E7 BENGALI DIGIT ONE
 		((KP_2) "২") ; U+09E8 BENGALI DIGIT TWO
@@ -232,32 +190,15 @@
 		("qq" "্")
 		("xx" "্‌")
 		("x" "ং")
-		("`" "`")
-		("``" "‌")
-		("```" "``")
-		("``f" "‍")
+		;; Tilde mappings are not needed for touchscreen.
 	)
 	(biram
-		("." "।")
-		(".." ".")
-		("..." "..")
-		("...." "...")
-		("....." "....")
-		("......" ".....")
-		("......." "......")
-		
-		("$" "৳")
-		("$f" "₹")
+		;; 9 mappings are removed for touchscreen.
+		;; The following 1 mapping is kept unchanged even for touchscreen.
 		(",,," ",,")
-		(".f" "॥")
-		(".ff" "৺")
-		("+" "+")
-		("-" "-")
-		("+f" "×")
-		("-f" "÷")
-		("$$" "$")
-		("=" "=")
-		("=f" "≠")
+		;; The following 2 mappings are changed for touchscreen. Used '।' in place of '.'
+		("।f" "॥")
+		("।ff" "৺")
 	)
 	(prithayok
 		(";" ";")
