@@ -113,7 +113,7 @@
 		("p" (set CnstID 21) (set CmpdCnstFlag 0) "প")
 		("ph" (set CnstID 22) (set CmpdCnstFlag 1) (set Fflag 0) "ফ")
 		("pf" (set CnstID 22) (set Fflag 1) (set CmpdCnstFlag 0) "ফ")
-		("f" (set CnstID 189) (set CmpdCnstFlag 0) "⁌")
+		("f" (set CnstID 189) (set CmpdCnstFlag 0) "◌")
 		("b" (set CnstID 23) (set CmpdCnstFlag 0) "ব")
 		("bf" (set CnstID 24) (set Fflag 1) (set CmpdCnstFlag 0) "ভ")
 		("v" (set CnstID 24) (set CmpdCnstFlag 0) (set Fflag 0) "ভ")
@@ -207,7 +207,7 @@
 		("/" (set FuserID 1) "/")
 		("//" (set FuserID 2) "/")
 		("///" (set FuserID 3) "/")
-		("/f" (set FuserID 4) "/⁌")
+		("/f" (set FuserID 4) "/◌")
 		("////" (set FuserID 5) "/")
 	)
 	(backspace
@@ -410,6 +410,8 @@
 
 			(cond
 				((& (= Cnst2 187)(= Cnst1 187)) (delete cstm2) (delete @-2) (insert "রররর") (reset_cnst_buffer_after_cnjnct))
+				((& (= Cnst2 187)(= Cnst1 189)) (delete cstm2) (delete @-2) (insert "রড়") (set CnstID 191) (reset_cnst_buffer_after_cnjnct))
+				((& (= Cnst2 191)(= Cnst1 189)) (delete cstm2) (delete @-2) (insert "রঢ়") (reset_cnst_buffer_after_cnjnct))
 				((& (= Cnst2 187) (> Cnst1 0) ) (move cstm2) (delete @-) (insert ?্) (move @>)  (reset_cnst_buffer_after_cnjnct)) ;; রর এর পরে কোনো ব্যঞ্জনবর্ণ লিখলে সেটা রেফ তৈরি করবে কোনো মডিফায়ার ছাড়াই
 				((& (= Cnst2 27) (= Cnst1 190)) (form_jo_phola) (reset_cnst_buffer_after_cnjnct))
 			)

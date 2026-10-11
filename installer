@@ -33,6 +33,18 @@ print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
+# Sort tags by their semantic version suffix while keeping the original tag names.
+sort_tags_by_version() {
+    while IFS= read -r tag; do
+        version=$(printf '%s\n' "$tag" | sed -nE 's/.*([0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?)(\+[0-9A-Za-z.-]+)?.*/\1/p')
+        if [ -n "$version" ]; then
+            printf '0\t%s\t%s\n' "$version" "$tag"
+        else
+            printf '1\t\t%s\n' "$tag"
+        fi
+    done | sort -t "$(printf '\t')" -k1,1n -k2,2Vr -k3,3 | cut -f3-
+}
+
 # Function to detect distribution
 detect_distro() {
     if [ -f /etc/os-release ]; then
@@ -67,7 +79,7 @@ check_package_arch() {
 
 # Welcome message
 echo "=========================================="
-echo "    Khipro Dark Installer"
+echo "          Khipro Dark Installer"
 echo "=========================================="
 echo ""
 
@@ -333,7 +345,7 @@ if [[ $branch_choice =~ ^[Nn]$ ]]; then
     # Fetch available release tags for preview
     print_status "Fetching recent release tags..."
     # Using awk to handle formatting more reliably across platforms
-    recent_tags=$(git ls-remote --tags --refs "$REPO_URL" 2>/dev/null | cut -d/ -f3 | sort -V -r | head -n 3 | awk -v ORS=', ' '{print $0}' | sed 's/, $/ etc./')
+    recent_tags=$(git ls-remote --tags --refs "$REPO_URL" 2>/dev/null | cut -d/ -f3 | sort_tags_by_version | head -n 3 | awk -v ORS=', ' '{print $0}' | sed 's/, $/ etc./')
     
     if [ -z "$recent_tags" ]; then
         recent_tags="e.g. v34.0.0-beta, v33.1.0, etc."
@@ -374,7 +386,7 @@ if [[ $branch_choice =~ ^[Nn]$ ]]; then
     if [ "$input_ver" -eq 1 ]; then
         # Show tags with pagination
         print_status "Fetching available release tags..."
-        all_tags=$(git ls-remote --tags --refs "$REPO_URL" 2>/dev/null | cut -d/ -f3 | sort -V -r)
+        all_tags=$(git ls-remote --tags --refs "$REPO_URL" 2>/dev/null | cut -d/ -f3 | sort_tags_by_version)
         
         if [ -z "$all_tags" ]; then
             print_error "No release tags found."
