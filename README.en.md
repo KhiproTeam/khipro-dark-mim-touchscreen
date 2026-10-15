@@ -32,6 +32,12 @@ For example:
 `নতরয//` -> `নত্র্য`  
 `নতরয///` -> `ন্ত্র্য`  
 That is, by pressing slash 1, 2, or 3 times, you can form conjuncts of 2, 3, or 4 letters. This saves a lot of time.
+
+#### Conjuncts can still be formed even after typing a diacritic (kar) following a consonant cluster
+`নতরযা/` -> `নতর‍্যা`  
+`নতরযা//` -> `নত্র্যা`  
+`নতরযা///` -> `ন্ত্র্যা`  
+
 ### Why this change
 Previously, to prevent conjunct formation, one had to use a *separator* or a *slicer* or *o-kar*. For example:  
 `lag;be` -> `লাগবে` (separator placed in between)   
@@ -47,19 +53,23 @@ For this reason, conjunct formation has now been made manual. Based on how many 
 > - ক্ষ, জ্ঞ will be treated as distinct letters. That means no slash is required to form them. `kf` = `ক্ষ`, `gg` = `জ্ঞ`. However, if anyone really wants to, they can also be typed the long way via `ক`+`ষ`, etc.  
 
 ### Details of the new feature
+#### Khanda Ta `ৎ`
 - It is known that in *Khipro Classic*, we used slash to type `ৎ`. However, since slash now has a different role, typing `ৎ` behaves slightly differently. 
 - Interestingly, you can still type `ৎ` using slash.
 - When `ত` comes directly after a vowel, there is actually nothing to conjoin by pressing slash. So in that case, typing `ত`+`/` will produce `ৎ`.
 - When `ত` comes after a consonant, pressing slash naturally joins the two consonants. For example: when trying to write 'পতৎ', if someone types `পতত`+`/`, it will produce `পত্ত` 🥲.
 - However, in such cases, simply pressing the modifier `f` once after it will produce `ৎ`. For example: `পতত`+`/`+`f` = `পতৎ`
 - But such issues will rarely occur, because in almost all cases `ৎ` is preceded by a vowel. For example, বিরুৎ, বিদ্যুৎ, হঠাৎ, etc. On the other hand, words like শরৎ, পতৎ, etc., where the modifier `f` is needed, are less common. 
+#### Splitting characters like খ, ঘ, ঙ, ছ, ঝ, থ, ধ, শ, etc.
 - Previously, consonants like খ, ঘ, ঝ, শ could be split using slash. Interestingly, that can still be done now.
 - However, in certain cases in that scenario as well, pressing `f` after `/` might be needed.  
 For example: `শ`+`/` = `সহ`, `খ`+`/` = `কহ`,  
 whereas `কশ`+`/`+`f` = `কসহ`
+#### Chandrabindu `ঁ`
 - Interestingly, chandrabindu can also still be typed with slash as before. However, since chandrabindu always follows a vowel, pressing slash after a vowel will specifically produce chandrabindu.  
 For example: `to`+`/` = `তঁ`  
-Or if you want to take a slightly longer route, this can be done using the separator.  
+- Or you can type chandrabindu by using the modifier `f` after `/`. For example: `/f` -> `ঁ`
+- Or if you want to take a slightly longer route, this can be done using the separator.  
 For example: `t;//` = `তঁ`
 
 ### General Overview of Khipro
